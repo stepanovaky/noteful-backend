@@ -5,6 +5,11 @@ const FolderService = {
         return knex
             .select('*')
             .from('folders');
+    },
+    newFolder(knex) {
+        return knex('folders')
+            .insert({})
+
     }
 }
 

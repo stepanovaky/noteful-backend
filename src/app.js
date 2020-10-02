@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
-const FolderService = require('./folder-service');
+// const FolderService = require('./folder-service');
 const knexInstance = require('../database/knex');
 const NoteService = require('./note-service')
 
@@ -19,16 +19,16 @@ app.use(morgan(morganOption));
 app.use(helmet());
 app.use(cors());
 
-app.get('/foldersfetch', (req, res, next) => {
-    FolderService.getAllFolders(knexInstance)
-      .then(folders => {
-        res.json(folders)
-      })
-      .catch(next)
+// app.get('/foldersfetch', (req, res, next) => {
+//     FolderService.getAllFolders(knexInstance)
+//       .then(folders => {
+//         res.json(folders)
+//       })
+//       .catch(next)
         
-});
+// });
 
-app.get('./notesfetch', (req, res, next) => {
+app.get('/notesfetch', (req, res, next) => {
   NoteService.getAllNotes(knexInstance)
     .then(notes => {
       res.json(notes)
@@ -49,4 +49,15 @@ app.use(function errorHandler(error, req, res, next) {
    res.status(500).json(response)
  })
 
-module.exports = app
+module.exports = app;
+
+const knex = require('knex');
+
+
+
+const db = knex({
+    client: 'pg', 
+    connection: process.env.DB_URL,
+})
+
+app.set('db', db);
