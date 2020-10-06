@@ -19,25 +19,25 @@ app.use(morgan(morganOption));
 app.use(helmet());
 app.use(cors());
 
-// app.use(foldersRouter);
-// app.use(notesRouter);
+app.use(foldersRouter);
+app.use(notesRouter);
 
-app.get('/foldersfetch', (req, res, next) => {
-    FolderService.getAllFolders(knexInstance)
-      .then(folders => {
-        res.json(folders)
-      })
-      .catch(next)
+// app.get('/foldersfetch', (req, res, next) => {
+//     FolderService.getAllFolders(knexInstance)
+//       .then(folders => {
+//         res.json(folders)
+//       })
+//       .catch(next)
         
-});
+// });
 
-app.get('/notesfetch', (req, res, next) => {
-  NoteService.getAllNotes(knexInstance)
-    .then(notes => {
-      res.json(notes)
-    })
-    .catch(next)
-})
+// app.get('/notesfetch', (req, res, next) => {
+//   NoteService.getAllNotes(knexInstance)
+//     .then(notes => {
+//       res.json(notes)
+//     })
+//     .catch(next)
+// })
 
 
 
