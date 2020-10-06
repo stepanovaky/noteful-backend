@@ -5,7 +5,11 @@ const NoteService = {
         return knex
             .select('*')
             .from('notes');
-    }
-}
+    },
+    deleteNote(knex, id) {
+        return knex('notes')
+        .where({ id })
+        .delete()
+} }
 
 module.exports = NoteService;
