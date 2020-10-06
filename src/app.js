@@ -4,9 +4,9 @@ const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
-// const FolderService = require('./folder-service');
-const knexInstance = require('../database/knex');
 const NoteService = require('./note-service')
+const foldersRouter = require('../routes/folders')
+const notesRouter = require('../routes/notes')
 
 
 const app = express();
@@ -19,14 +19,17 @@ app.use(morgan(morganOption));
 app.use(helmet());
 app.use(cors());
 
-// app.get('/foldersfetch', (req, res, next) => {
-//     FolderService.getAllFolders(knexInstance)
-//       .then(folders => {
-//         res.json(folders)
-//       })
-//       .catch(next)
+// app.use(foldersRouter);
+// app.use(notesRouter);
+
+app.get('/foldersfetch', (req, res, next) => {
+    FolderService.getAllFolders(knexInstance)
+      .then(folders => {
+        res.json(folders)
+      })
+      .catch(next)
         
-// });
+});
 
 app.get('/notesfetch', (req, res, next) => {
   NoteService.getAllNotes(knexInstance)
