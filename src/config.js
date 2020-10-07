@@ -5,7 +5,3 @@ module.exports = {
     TEST_DATABASE_URL: process.env.TEST_DATABASE_URL || 'postgresql://katerina@localhost/noteful-test'
   }
 
-export default {
-  API_ENDPOINT: `https://notefulbackend.herokuapp.com/`,
-  API_KEY: process.env.REACT_APP_API_KEY,
-}

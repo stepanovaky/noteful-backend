@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
 const foldersRouter = require('../routes/folders')
 const notesRouter = require('../routes/notes')
+const { DATABASE_URL } = require('./config');
 
 
 const app = express();

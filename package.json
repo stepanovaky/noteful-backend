@@ -2,10 +2,10 @@
   "name": "noteful-backend",
   "version": "1.0.0",
   "description": "",
-  "engins": {
+  "engine": {
     "node": "12.18.0"
 
-  }
+  },
   "main": "index.js",
   "scripts": {
     "test": "mocha --require test/setup.js",
