@@ -15,17 +15,21 @@ notesRouter
             })
             .catch(next)
     })
-    // .delete((req, res, next) => {
-    //     NoteService.deleteNote(
-    //         req.app.get('db'),
-    //         req.params.id
-            
-    //     )
-    //         .then(() => {
-    //             res.status(204).end()
-    //         })
-    //         .catch(next)
-    // })
+    .post(jsonParser, (req, res, next) => {
+        const { id, name, modified, folderid, content } = req.body
+        const addedNote = { id: id, name: name, modified: modified, folderid: folderid, content: content }
+        NoteService.insertNote(
+            req.app.get('db'),
+            addedNote
+        )
+        .then(note => {
+            res
+                .status(201)
+                .location(`/notes/${id}`)
+                .json(note)
+        })
+    })
+  
 
 
     notesRouter

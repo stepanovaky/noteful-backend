@@ -8,8 +8,16 @@ const NoteService = {
     },
     deleteNote(knex, id) {
         return knex('notes')
-        .where({ id })
-        .delete()
-} }
+            .where({ id })
+            .delete()
+},
+    insertNote(knex, newNote) {
+        return knex
+            .insert(newNote)
+            .into('notes')
+            .returning('*')
+            
+    }
+}
 
 module.exports = NoteService;

@@ -4,7 +4,6 @@ const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
-const NoteService = require('./note-service')
 const foldersRouter = require('../routes/folders')
 const notesRouter = require('../routes/notes')
 
@@ -22,22 +21,6 @@ app.use(cors());
 app.use(foldersRouter);
 app.use(notesRouter);
 
-// app.get('/foldersfetch', (req, res, next) => {
-//     FolderService.getAllFolders(knexInstance)
-//       .then(folders => {
-//         res.json(folders)
-//       })
-//       .catch(next)
-        
-// });
-
-// app.get('/notesfetch', (req, res, next) => {
-//   NoteService.getAllNotes(knexInstance)
-//     .then(notes => {
-//       res.json(notes)
-//     })
-//     .catch(next)
-// })
 
 
 
@@ -60,7 +43,7 @@ const knex = require('knex');
 
 const db = knex({
     client: 'pg', 
-    connection: process.env.DB_URL,
+    connection: DATABASE_URL,
 })
 
 app.set('db', db);

@@ -1,6 +1,7 @@
 const express = require('express');
 const FolderService = require('../src/folder-service');
 
+
 const foldersRouter = express.Router();
 const jsonParser = express.json();
 
@@ -25,20 +26,11 @@ foldersRouter
         .then(folder => {
             res
                 .status(201)
-                .location(`/folders/${id}`)
+                .location(`/folder/${id}`)
                 .json(folder)
         })
     })
 
 
-
-    // app.get('/foldersfetch', (req, res, next) => {
-    //     FolderService.getAllFolders(knexInstance)
-    //       .then(folders => {
-    //         res.json(folders)
-    //       })
-    //       .catch(next)
-            
-    // });
 
 module.exports = foldersRouter;
