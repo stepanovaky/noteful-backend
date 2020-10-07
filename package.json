@@ -11,7 +11,8 @@
     "start": "node src/server.js",
     "predeploy": "npm audit",
     "deploy": "git push heroku master",
-    "repl": "node"
+    "repl": "node",
+    "postdeploy":"npm run migrate:production"
   },
   "keywords": [],
   "author": "",
