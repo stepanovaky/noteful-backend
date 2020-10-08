@@ -2,7 +2,7 @@
   "name": "noteful-backend",
   "version": "1.0.0",
   "description": "",
-  "engine": {
+  "engines": {
     "node": "12.18.0"
 
   },
